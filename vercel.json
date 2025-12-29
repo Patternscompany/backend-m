@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
+        "buildArgs": {
+          "SKIP_PREFLIGHT_CHECK": "true"
+        }
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
